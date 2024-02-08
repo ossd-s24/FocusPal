@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "FocusPal",
+    "version": "1.0",
+  
+    "description": "Block distracting sites and stay focused",
+  
+    "icons": {
+      "48": "icons/border-48.png"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["*://*.mozilla.org/*"],
+        "js": ["focusPal.js"]
+      }
+    ]
+  }
