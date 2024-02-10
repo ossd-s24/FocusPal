@@ -24,10 +24,14 @@
             </u1>
         </div>
         <div class="tab-nav">
-            <a class="nav-link" href="index.html">Block Site</a>
-            <a class="nav-link" href="blockList.html">Block List</a>
+            <button class="tab-btn tab-btn-active" href="index.html" onclick="openTab(event, 'block-site')">
+                Block Site
+            </button>
+            <button class="tab-btn" href="blockList.html" onclick="openTab(event, 'block-list')">
+                Block List
+            </button>
         </div>
-        <div class="block-site">
+        <div id="block-site" class="tab-content">
             <div class="green-bg"></div>
             <div class="site-div">
                 <div class="icon-div">
@@ -37,12 +41,38 @@
             </div>
             <div class="btn-section">
                 <div>
-                    <button class="primary-btn btn"> Block This Site </button>
+                    <button class="primary-btn btn"> Block this site </button>
                 </div>
             <div>
-                <button class="secondary-btn btn"> Edit BlockList </button>
+                <button class="secondary-btn btn"> Edit block list </button>
             </div>
         </div>
+        </div>
+        <div id="block-list" class="tab-content">
+            <section class="block-input-site">
+                <label class="url-label" for="name">Block Site</label>
+                <input class="url-input" type="url" name="url" placeholder="Enter URL" />
+                <button class="primary-btn btn">Block this site</button>
+            </section>
+            <section>
+                <p class="blocked-sites-heading">Blocked Sites</p>
+                <ul class="blocked-sites-ul">
+                    <li class="blocked-sites-li">
+                        <div class="site-info">
+                            <img class="favicon" src="" alt="">
+                            <p class="site-url">website.com</p>
+                        </div>
+                        <img src="../assets/delete.svg" alt="delete">
+                    </li>
+                    <li class="blocked-sites-li">
+                        <div class="site-info">
+                            <img class="favicon" src="" alt="">
+                            <p class="site-url">website.com</p>
+                        </div>
+                        <img src="../assets/delete.svg" alt="delete">
+                    </li>
+                </ul>
+            </section>
         </div>
     </div>
 </body>
