@@ -13,3 +13,72 @@
     --tab-shadow:  0px 4px 8px rgba(0, 0, 0, 0.04);
     --icon-shadow:  0px 4px 16px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04);
 }
+
+.body{
+    width: 320px;
+    height: 480px;
+    
+}
+
+.main-header{
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    
+}
+
+
+.header-icons {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.tab-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 320px;
+    height: 31px;
+    padding: 8px 0px 0px;
+}
+
+.green-backround{
+    background-color: var(--secondary);
+    width: 320px;
+    height: 120px;
+}
+
+.icon-div{
+    text-align: center;
+
+}
+
+.button-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px;   
+    gap: 8px;
+}
+
+.block-button{
+    background-color: var(--primary);
+    width: 280px;
+    height: 41px;
+    padding: 12px, 24px, 12px, 24px;
+    border-radius: 8px;
+    gap: 8px;
+
+}
+.edit-button{
+    background-color: var(--gray);
+    width: 280px;
+    height: 41px;
+    padding: 12px, 24px, 12px, 24px;
+    border-radius: 8px;
+    gap: 8px;
+}

@@ -8,6 +8,15 @@
     "icons": {
       "48": "icons/border-48.png"
     },
+
+
+    "permissions": ["tabs"],
+
+    "browser_action": {
+      "default_icon": "assests/github.svg",
+      "default_title": "FocusPal",
+      "default_popup": "popup/index.html"
+    },
   
     "content_scripts": [
       {
