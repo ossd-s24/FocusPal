@@ -3,48 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
     <title>FocusPal</title>
 </head>
 <body>
-    <div class="main-header">
-        <h2 class="name">FocusPal</h2>
-        <u1 class="header-icons">
-            <li>
-                <a href="https://github.com/ossd-s24/FocusPal"><img src="/assets/github.svg" alt="picture of github logo"></a>
-            </li>
-            <li>
-                <img src="/assets/close.svg" alt="closing icon">
-            </li>
-        </u1>
-    </div>
-
-
-    <div class="tab-nav">
-        <a href="index.html">Block Site</a>
-        <a href="blockList.html">Block List</a>
-
-    </div>
-
-    <div class="green-backround"></div>
-
-    <div class="icon-div">
-        <img id="iconUrl" src="" alt="">
-        <h3 id="websiteName"></h3>
-    </div>
-    
-   
-    
-    <div class="button-section">
-        <div>
-            <button class="block-button"> Block This Site </button>
+    <div class="extension">
+        <div class="main-header">
+            <p class="logo">FocusPal</p>
+            <u1 class="header-icons">
+                <li>
+                    <a href="https://github.com/ossd-s24/FocusPal" target="_blank"><img src="/assets/github.svg" alt="github logo"></a>
+                </li>
+                <li>
+                    <img src="/assets/close.svg" alt="close icon">
+                </li>
+            </u1>
         </div>
-       <div>
-        <button class="edit-button"> Edit BlockList </button>
-       </div>
-       
+        <div class="tab-nav">
+            <a class="nav-link" href="index.html">Block Site</a>
+            <a class="nav-link" href="blockList.html">Block List</a>
+        </div>
+        <div class="block-site">
+            <div class="green-bg"></div>
+            <div class="site-div">
+                <div class="icon-div">
+                    <img id="iconUrl" src="" alt="favicon">
+                </div>
+                <h1 id="site-name">Name</h1>
+            </div>
+            <div class="btn-section">
+                <div>
+                    <button class="primary-btn btn"> Block This Site </button>
+                </div>
+            <div>
+                <button class="secondary-btn btn"> Edit BlockList </button>
+            </div>
+        </div>
+        </div>
     </div>
-    
 </body>
 </html>

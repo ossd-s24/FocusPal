@@ -14,10 +14,24 @@
     --icon-shadow:  0px 4px 16px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04);
 }
 
-.body{
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.extension{
     width: 320px;
     height: 480px;
-    
+    border: 1px solid gray;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: "Inter", sans-serif;
+}
+
+.logo {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .main-header{
@@ -25,15 +39,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    
-}
-
-
-.header-icons {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
+    padding: 16px 20px;
 }
 
 .tab-nav {
@@ -41,44 +47,93 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
-    width: 320px;
-    height: 31px;
     padding: 8px 0px 0px;
+    background-color: var(--white);
+    box-shadow: var(--sha);
 }
 
-.green-backround{
-    background-color: var(--secondary);
+.nav-link {
+    text-decoration: none;
+    color: var(--gray-dark);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 24px;
+}
+
+.header-icons {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+}
+
+.block-site{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.green-bg{
+    position: relative;
+    top: 0;
     width: 320px;
-    height: 120px;
+    background-color: var(--secondary);
+    height: 112px;
+}
+
+.site-div{
+    position: absolute;
+    top: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .icon-div{
-    text-align: center;
-
+    width: 64px;
+    height: 64px;
+    background-color: var(--white);
+    box-shadow: var(--icon-shadow);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.button-section{
+#site-name {
+    font-size: 18px;
+    text-transform: lowercase;
+}
+
+
+.btn-section{
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0px;   
     gap: 8px;
+    width: 280px;
+    top: 212px;
 }
 
-.block-button{
+.btn {
+    border-radius: 8px;
+    padding: 12px 24px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.primary-btn{
     background-color: var(--primary);
-    width: 280px;
-    height: 41px;
-    padding: 12px, 24px, 12px, 24px;
-    border-radius: 8px;
-    gap: 8px;
-
+    color: var(--white);
 }
-.edit-button{
-    background-color: var(--gray);
-    width: 280px;
-    height: 41px;
-    padding: 12px, 24px, 12px, 24px;
-    border-radius: 8px;
-    gap: 8px;
+.secondary-btn{
+    background-color: var(--gray-light);
+    color: var(--gray-darkest);
 }
