@@ -22,3 +22,22 @@ browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
     });
     
 });
+
+function openTab(evt, tabName) {
+    tabBtn = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < tabBtn.length; i++) {
+        tabBtn[i].className = "tab-btn";
+    }
+    evt.target.classList.add("tab-btn-active")
+
+    tabContent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+    if (tabName === "block-site"){
+        document.getElementById(tabName).style.display = "flex";
+    }
+    else {
+        document.getElementById(tabName).style.display = "block";
+    }
+}
