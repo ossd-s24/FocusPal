@@ -1,43 +1,72 @@
-let blockedURL = [];
+let blockedURLs = JSON.parse(localStorage.getItem('blockedURLs')) || [];
 
-browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
-    const currentTab = tabs[0];
-    
-    const websiteName = currentTab.title;
-    const websiteURL = currentTab.url;
-    const websiteFavicon = currentTab.favIconUrl;
-  
-    
-    document.getElementById('websiteName').textContent = websiteName;
-    document.getElementById('iconUrl').src = websiteFavicon;
-    document.getElementById('iconUrl').style.width = '64px';
-    document.getElementById('iconUrl').style.height = '64px';
+function updateBlockedSitesDisplay() {
+    const blockedSitesList = document.querySelector('.blocked-sites-ul');
+    blockedSitesList.innerHTML = ''; 
 
-    console.log("hello world");
-
-    document.querySelector('.block-button').addEventListener('click', function() {
-        // Add the current website URL to the blockedUrls array
-        blockedURL.push(websiteURL);
-        console.log('Blocked URLs:', blockedURL);
+    blockedURLs.forEach((site, index) => {
+        const li = document.createElement('li');
+        li.className = 'blocked-sites-li';
+        li.innerHTML = `
+            <div class="site-info">
+                <img class="favicon" src="" alt="">
+                <p class="site-url">${site.url}</p>
+            </div>
+            <img src="assets/delete.svg" alt="delete" class="delete-btn" data-index="${index}">
+        `;
+        blockedSitesList.appendChild(li);
     });
-    
-});
 
-function openTab(evt, tabName) {
-    tabBtn = document.getElementsByClassName("tab-btn");
-    for (i = 0; i < tabBtn.length; i++) {
-        tabBtn[i].className = "tab-btn";
-    }
-    evt.target.classList.add("tab-btn-active")
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            blockedURLs.splice(index, 1); 
+            localStorage.setItem('blockedURLs', JSON.stringify(blockedURLs)); 
+            updateBlockedSitesDisplay(); 
+        });
+    });
+}
 
-    tabContent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabContent.length; i++) {
-        tabContent[i].style.display = "none";
-    }
-    if (tabName === "block-site"){
-        document.getElementById(tabName).style.display = "flex";
-    }
-    else {
-        document.getElementById(tabName).style.display = "block";
+function initPopup() {
+    browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
+        const currentTab = tabs[0];
+        document.getElementById('site-name').textContent = currentTab.title || 'Current Site';
+        document.getElementById('iconUrl').src = currentTab.favIconUrl || '';
+
+        document.querySelector('#block-site .primary-btn').addEventListener('click', function() {
+            blockedURLs.push({ url: currentTab.url }); 
+            localStorage.setItem('blockedURLs', JSON.stringify(blockedURLs)); 
+            updateBlockedSitesDisplay(); 
+            alert('Site blocked successfully!');
+        });
+    });
+
+    setupTabNavigation();
+    setupEditBlockListButton();
+
+    updateBlockedSitesDisplay(); 
+}
+
+function setupTabNavigation() {
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(evt) {
+            document.querySelectorAll('.tab-content').forEach(tc => tc.style.display = 'none');
+            tabs.forEach(t => t.classList.remove('tab-btn-active'));
+            document.getElementById(tab.getAttribute('data-target')).style.display = 'block';
+            tab.classList.add('tab-btn-active');
+        });
+    });
+
+    if (tabs.length > 0) {
+        tabs[0].click(); // Display the first tab by default
     }
 }
+
+function setupEditBlockListButton() {
+    document.querySelector('.secondary-btn').addEventListener('click', function() {
+        document.querySelector('[data-target="block-list"]').click(); // Simulate a click on the "Block List" tab
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initPopup);
