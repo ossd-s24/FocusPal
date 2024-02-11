@@ -9,7 +9,7 @@ function updateBlockedSitesDisplay() {
         li.className = 'blocked-sites-li';
         li.innerHTML = `
             <div class="site-info">
-                <img class="favicon" src="" alt="">
+                <img class="favicon" src="${site.icon}" alt="">
                 <p class="site-url">${site.url}</p>
             </div>
             <img src="assets/delete.svg" alt="delete" class="delete-btn" data-index="${index}">
@@ -27,6 +27,8 @@ function updateBlockedSitesDisplay() {
     });
 }
 
+
+
 function initPopup() {
     browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
         const currentTab = tabs[0];
@@ -34,7 +36,7 @@ function initPopup() {
         document.getElementById('iconUrl').src = currentTab.favIconUrl || '';
 
         document.querySelector('#block-site .primary-btn').addEventListener('click', function() {
-            blockedURLs.push({ url: currentTab.url }); 
+            blockedURLs.push({ url: currentTab.url, icon: currentTab.favIconUrl}); 
             localStorage.setItem('blockedURLs', JSON.stringify(blockedURLs)); 
             updateBlockedSitesDisplay(); 
             alert('Site blocked successfully!');
@@ -45,6 +47,35 @@ function initPopup() {
     setupEditBlockListButton();
 
     updateBlockedSitesDisplay(); 
+}
+
+function setupAddToBlockListButton() {
+    document.getElementById('add-to-block-list-btn').addEventListener('click', function() {
+        const urlInput = document.querySelector('.url-input');
+        const urlTrim = urlInput.value.trim(); 
+        const faviconUrl = `${urlTrim}/favicon.ico`;
+       
+        if (urlTrim !== '') {
+            let isAlreadyBlocked = false;
+            blockedURLs.forEach(website => {
+                if (website.url === urlTrim) {
+                    alert('This site is already blocked.');
+                    isAlreadyBlocked = true;
+                }
+            });
+            if (!isAlreadyBlocked){
+                blockedURLs.push({ url: urlTrim , icon: faviconUrl});
+                localStorage.setItem('blockedURLs', JSON.stringify(blockedURLs));
+                updateBlockedSitesDisplay(); 
+                alert('Site blocked successfully!');
+                urlInput.value = '';
+
+            }
+            
+        } else {
+            alert('Please enter a valid URL.');
+        }
+    });
 }
 
 function setupTabNavigation() {
@@ -70,3 +101,4 @@ function setupEditBlockListButton() {
 }
 
 document.addEventListener('DOMContentLoaded', initPopup);
+document.addEventListener('DOMContentLoaded', setupAddToBlockListButton);
