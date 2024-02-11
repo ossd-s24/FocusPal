@@ -7,31 +7,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script> 
     <title>FocusPal</title>
 </head>
 <body>
     <div class="extension">
         <div class="main-header">
             <p class="logo">FocusPal</p>
-            <u1 class="header-icons">
+            <ul class="header-icons">
                 <li>
                     <a href="https://github.com/ossd-s24/FocusPal" target="_blank"><img src="/assets/github.svg" alt="github logo"></a>
                 </li>
                 <li>
                     <img src="/assets/close.svg" alt="close icon">
                 </li>
-            </u1>
+            </ul>
         </div>
         <div class="tab-nav">
-            <button class="tab-btn tab-btn-active" href="index.html" onclick="openTab(event, 'block-site')">
+            <button class="tab-btn tab-btn-active" data-target="block-site">
                 Block Site
             </button>
-            <button class="tab-btn" href="blockList.html" onclick="openTab(event, 'block-list')">
+            <button class="tab-btn" data-target="block-list">
                 Block List
             </button>
         </div>
-        <div id="block-site" class="tab-content">
+        <div id="block-site" class="tab-content" style="display: block;"> 
             <div class="green-bg"></div>
             <div class="site-div">
                 <div class="icon-div">
@@ -41,37 +41,23 @@
             </div>
             <div class="btn-section">
                 <div>
-                    <button class="primary-btn btn"> Block this site </button>
+                    <button id="block-this-site-btn" class="primary-btn btn">Block this site</button> 
                 </div>
-            <div>
-                <button class="secondary-btn btn"> Edit block list </button>
+                <div>
+                    
+                    <button class="secondary-btn btn" data-target="block-list">Edit block list</button>
+                </div>
             </div>
         </div>
-        </div>
-        <div id="block-list" class="tab-content">
+        <div id="block-list" class="tab-content" style="display: none;"> 
             <section class="block-input-site">
                 <label class="url-label" for="name">Block Site</label>
                 <input class="url-input" type="url" name="url" placeholder="Enter URL" />
-                <button class="primary-btn btn">Block this site</button>
+                <button id="add-to-block-list-btn" class="primary-btn btn">Block this site</button> 
             </section>
             <section>
                 <p class="blocked-sites-heading">Blocked Sites</p>
-                <ul class="blocked-sites-ul">
-                    <li class="blocked-sites-li">
-                        <div class="site-info">
-                            <img class="favicon" src="" alt="">
-                            <p class="site-url">website.com</p>
-                        </div>
-                        <img src="../assets/delete.svg" alt="delete">
-                    </li>
-                    <li class="blocked-sites-li">
-                        <div class="site-info">
-                            <img class="favicon" src="" alt="">
-                            <p class="site-url">website.com</p>
-                        </div>
-                        <img src="../assets/delete.svg" alt="delete">
-                    </li>
-                </ul>
+                <ul class="blocked-sites-ul"></ul> 
             </section>
         </div>
     </div>

@@ -1,27 +1,30 @@
 {
-    "manifest_version": 2,
-    "name": "FocusPal",
-    "version": "1.0",
-  
-    "description": "Block distracting sites and stay focused",
-  
-    "icons": {
-      "48": "icons/border-48.png"
-    },
-
-
-    "permissions": ["tabs"],
-
-    "browser_action": {
-      "default_icon": "assests/github.svg",
-      "default_title": "FocusPal",
-      "default_popup": "popup/index.html"
-    },
-  
-    "content_scripts": [
-      {
-        "matches": ["*://*.mozilla.org/*"],
-        "js": ["focusPal.js"]
-      }
-    ]
+  "manifest_version": 2,
+  "name": "FocusPal",
+  "version": "1.0",
+  "description": "Block distracting sites and stay focused",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "<all_urls>",
+    "tabs"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["focusPal.js"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "assets/github.svg",
+    "default_title": "FocusPal",
+    "default_popup": "popup/index.html"
   }
+}
