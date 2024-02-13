@@ -6,9 +6,9 @@ FocusPal is a firefox extension that aims to block distracting sites and help us
 
 ## Features 
 
-- Blcok websites you are currently on 
-- Delete webistes you previously chose to block 
-- Add other websites to block  that you currently aren't on.
+- Block websites you are currently on.
+- Delete webistes you previously chose to block.
+- Add other websites to block that you currently aren't on.
 
 ## Installation
 
@@ -24,7 +24,7 @@ If you want to contribute please read the Contribution guidelines found here [CO
 
 ## Code of Conduct
 
-Please read the Code of Conduct before contributing
+Please read the [Code of Conduct](CODE_OF_CONDUCT.md) before contributing
 
 ## License 
 
