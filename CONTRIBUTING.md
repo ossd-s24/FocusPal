@@ -17,5 +17,5 @@ Our extension is open source and is happy to accept contributions.
 
 For additional help, you can contact any of the team members at our emails:
 - ko2091@nyu.edu
-- 
+- jennahan@nyu.edu
 
