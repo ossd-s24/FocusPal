@@ -1,10 +1,20 @@
-browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === "getBlockList") {
-        browser.storage.local.get(["blockedURLs"]).then((result) => {
-            sendResponse({ blockedURLs: result.blockedURLs || [] });
-            console.log("Sending block list", result.blockedURLs);
+console.log("background script loaded");
 
-        });
-        return true; 
+function sendBlockListToContentScript() {
+    const blockedURLs = JSON.parse(localStorage.getItem('blockedURLs')) || [];
+    console.log("Sending block list", blockedURLs);
+    
+    // gets the current tab we are on
+    browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
+        const currentTabId = tabs[0].id;
+        browser.tabs.sendMessage(currentTabId, { action: "blockList", blockedURLs: blockedURLs });
+    });
+}
+
+
+browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    // Check if the tab has finished loading
+    if (changeInfo.status === "complete") {
+        sendBlockListToContentScript();
     }
 });
