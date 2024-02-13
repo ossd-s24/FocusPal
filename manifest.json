@@ -19,7 +19,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["focusPal.js"]
+      "js": ["content_scripts/focusPal.js"]
     }
   ],
   "browser_action": {
@@ -28,3 +28,4 @@
     "default_popup": "popup/index.html"
   }
 }
+
