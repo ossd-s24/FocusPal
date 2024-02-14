@@ -20,14 +20,12 @@ function updateBlockedSitesDisplay() {
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const index = this.getAttribute('data-index');
-            blockedURLs.splice(index, 1); 
-            localStorage.setItem('blockedURLs', JSON.stringify(blockedURLs)); 
-            updateBlockedSitesDisplay(); 
+            blockedURLs.splice(index, 1);
+            localStorage.setItem('blockedURLs', JSON.stringify(blockedURLs));
+            updateBlockedSitesDisplay();
         });
     });
 }
-
-
 
 function initPopup() {
     browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
@@ -36,25 +34,26 @@ function initPopup() {
         document.getElementById('iconUrl').src = currentTab.favIconUrl || '';
 
         document.querySelector('#block-site .primary-btn').addEventListener('click', function() {
-            blockedURLs.push({ url: currentTab.url, icon: currentTab.favIconUrl}); 
-            localStorage.setItem('blockedURLs', JSON.stringify(blockedURLs)); 
-            updateBlockedSitesDisplay(); 
+            blockedURLs.push({ url: currentTab.url, icon: currentTab.favIconUrl});
+            localStorage.setItem('blockedURLs', JSON.stringify(blockedURLs));
+            updateBlockedSitesDisplay();
             alert('Site blocked successfully!');
         });
     });
 
     setupTabNavigation();
     setupEditBlockListButton();
+    setupCloseButton();
 
-    updateBlockedSitesDisplay(); 
+    updateBlockedSitesDisplay();
 }
 
 function setupAddToBlockListButton() {
     document.getElementById('add-to-block-list-btn').addEventListener('click', function() {
         const urlInput = document.querySelector('.url-input');
-        const urlTrim = urlInput.value.trim(); 
+        const urlTrim = urlInput.value.trim();
         const faviconUrl = `${urlTrim}/favicon.ico`;
-       
+
         if (urlTrim !== '') {
             let isAlreadyBlocked = false;
             blockedURLs.forEach(website => {
@@ -64,14 +63,12 @@ function setupAddToBlockListButton() {
                 }
             });
             if (!isAlreadyBlocked){
-                blockedURLs.push({ url: urlTrim , icon: faviconUrl});
+                blockedURLs.push({ url: urlTrim, icon: faviconUrl});
                 localStorage.setItem('blockedURLs', JSON.stringify(blockedURLs));
-                updateBlockedSitesDisplay(); 
+                updateBlockedSitesDisplay();
                 alert('Site blocked successfully!');
                 urlInput.value = '';
-
             }
-            
         } else {
             alert('Please enter a valid URL.');
         }
@@ -90,13 +87,19 @@ function setupTabNavigation() {
     });
 
     if (tabs.length > 0) {
-        tabs[0].click(); // Display the first tab by default
+        tabs[0].click();
     }
 }
 
 function setupEditBlockListButton() {
     document.querySelector('.secondary-btn').addEventListener('click', function() {
         document.querySelector('[data-target="block-list"]').click(); // Simulate a click on the "Block List" tab
+    });
+}
+
+function setupCloseButton() {
+    document.getElementById('close-btn').addEventListener('click', function() {
+        window.close(); 
     });
 }
 
