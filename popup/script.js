@@ -12,7 +12,7 @@ function updateBlockedSitesDisplay() {
                 <img class="favicon" src="${site.icon}" alt="">
                 <p class="site-url">${site.url}</p>
             </div>
-            <img src="assets/delete.svg" alt="delete" class="delete-btn" data-index="${index}">
+            <img src="/assets/delete.svg" alt="delete" class="delete-btn" data-index="${index}">
         `;
         blockedSitesList.appendChild(li);
     });

@@ -119,6 +119,10 @@ h1, h2, h3, h4, h5, h6, p, a, label {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
 }
 
 .icon-div{
@@ -147,6 +151,10 @@ h1, h2, h3, h4, h5, h6, p, a, label {
     gap: 8px;
     width: 280px;
     top: 212px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
 }
 
 #block-list {
